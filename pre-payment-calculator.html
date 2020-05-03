@@ -1,0 +1,202 @@
+<link rel="stylesheet" href="../wp-content/themes/bootstrap-basic/pre-payment-calculator/pre-payment-style.css">
+<div class="container-calculator">
+      <form id="prepayment-form" method="post" action=""> 
+         <div class="container col-emi-1">
+            <!-- Loan Amount -->
+            <h4 class="input-title">Loan Amount</h4>
+            <div class="container-emi">
+               <div class="row">
+                  <div class="col-md-12 emi-col-1">
+                     <div class="col-md-8 emi-tooltip">
+                        <p class="m-tooltip m-tooltip-left">50000</p>
+                        <p class="m-tooltip m-tooltip-right">5 Cr</p>
+                     </div>
+                     <div class="col-md-8 col-range">
+                        <input type="range" min="50000" max="50000000" value="50000" id="m_range_amount" name="m_range_amount" />
+                     </div>
+                     <div class="col-md-4 col-xs-8 emi-col-2 col-input">
+                        <span class="input-append amount-input-text">
+                           <input type="text" class="displayRange pl-new" min="50000" max="50000000" value="50000" name="m_range_amount" id="m_input_amount" />
+                           <p class="amount-inr">INR</p>
+                        </span>
+                     </div>
+                  </div>
+               </div>
+            </div>
+      <!-- Loan Amount -->
+
+      <!-- Interest -->
+      <h4 class="input-title">Interest</h4>
+      <div class="container-emi">
+         <div class="row">
+            <div class="col-md-12 emi-col-1">
+               <div class="col-md-8 emi-tooltip">
+                  <p class="m-tooltip m-tooltip-left">6%</p>
+                  <p class="m-tooltip m-tooltip-right">30%</p>
+               </div>
+               <div class="col-md-8 col-range">
+                  <input type="range" min="6" max="30" value="6" id="m_range_interest" name="m_range_interest" />
+               </div>
+               <div class="col-md-4 col-xs-8 emi-col-2 col-input">
+                  <span class="input-append amount-input-text">
+                     <input type="text" class="displayRange pl-new" min="6" max="30" value="6" name="m_range_interest" id="m_input_interest" />
+                     <p class="amount-inr">%</p>
+                  </span>
+               </div>
+            </div>
+         </div>
+      </div>
+ <!-- Interest -->
+
+ <!-- Tenure -->
+ <h4 class="input-title">Tenure (In Months)</h4>
+ <div class="container-emi">
+    <div class="row">
+       <div class="col-md-12 emi-col-1">
+          <div class="col-md-8 emi-tooltip">
+             <p class="m-tooltip m-tooltip-left">12</p>
+             <p class="m-tooltip m-tooltip-right">800</p>
+          </div>
+          <div class="col-md-8 col-range">
+             <input type="range" min="12" max="800" value="12" id="m_range_tenure" name="m_range_tenure" onchange="updateInstallment()" onkeyup="updateInstallment()" />
+          </div>
+          <div class="col-md-4 col-xs-8 emi-col-2 col-input">
+             <span class="input-append amount-input-text">
+                <input type="text" class="displayRange pl-new" min="12" max="800" value="12" name="m_range_tenure" id="m_input_tenure" onchange="updateInstallment()" onkeyup="updateInstallment()" />
+                <p class="amount-inr">Months</p>
+             </span>
+          </div>
+       </div>
+    </div>
+ </div>
+ <!-- Tenure -->
+
+<!-- Lumpsum / Monthly -->
+<h4 class="input-title">Prepayment Options</h4>
+<div class="m-rate container-emi">
+      <div class="m-rate-container">
+         <div class="m-column m-rate">
+            <label class="checkbox-button m-calculator">
+            <input type="radio" class="checkbox-button__input m-calculator" name="prepayment-option" id="one" value="1" onchange="changeonClick()" checked="checked">
+            <span class="checkbox-button__control m-calculator"></span></label><p class="m-label">Lumpsum</p>
+         </div>
+      </div>
+      <div class="m-rate-container">
+         <div class="m-column m-rate">
+            <label class="checkbox-button m-calculator">
+            <input type="radio" class="checkbox-button__input m-calculator" name="prepayment-option" id="two" value="2" onchange="changeonClick()" >
+            <span class="checkbox-button__control m-calculator"></span></label><p class="m-label">Monthly</p>
+         </div>
+      </div>
+</div>
+
+   <!-- Lumpsum Part 1 -->
+   <div class="lumpsum-onetime">
+      <h4 class="input-title">Lumpsum Amount</h4>
+            <div class="container-emi">
+               <div class="row">
+                  <div class="col-md-12 emi-col-1">
+                     <div class="col-md-8 emi-tooltip">
+                        <p class="m-tooltip m-tooltip-left">50000</p>
+                        <p class="m-tooltip m-tooltip-right">5 Cr</p>
+                     </div>
+                     <div class="col-md-8 col-range">
+                        <input type="range" min="50000" max="50000000" value="50000" id="m_range_lumpsum_amount" name="m_range_lumpsum_amount" />
+                     </div>
+                     <div class="col-md-4 col-xs-8 emi-col-2 col-input">
+                        <span class="input-append amount-input-text">
+                           <input type="text" class="displayRange pl-new" min="50000" max="50000000" value="50000" name="m_range_lumpsum_amount" id="m_input_lumpsum_amount" />
+                           <p class="amount-inr">INR</p>
+                        </span>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         
+
+            <h4 class="input-title">EMI Month</h4>
+            <div class="container-emi">
+               <div class="row">
+                  <div class="col-md-12 emi-col-1">
+                     <div class="col-md-8 emi-tooltip">
+                        <p class="m-tooltip m-tooltip-left">12</p>
+                        <p class="m-tooltip m-tooltip-right">800</p>
+                     </div>
+                     <div class="col-md-8 col-range">
+                        <input type="range" min="12" max="800" value="12" id="m_range_lumpsum_month" name="m_range_lumpsum_month" onchange="updateInstallment()" onkeyup="updateInstallment()" />
+                     </div>
+                     <div class="col-md-4 col-xs-8 emi-col-2 col-input">
+                        <span class="input-append amount-input-text">
+                           <input type="text" class="displayRange pl-new" min="12" max="800" value="12" name="m_range_lumpsum_month" id="m_input_lumpsum_month" onchange="updateInstallment()" onkeyup="updateInstallment()" />
+                           <p class="amount-inr">Months</p>
+                        </span>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+
+   <!-- Lumpsum Part 2 -->
+   <div class="lumpsum-monthly">
+      <h4 class="input-title">Monthly Additional Amount</h4>
+            <div class="container-emi">
+               <div class="row">
+                  <div class="col-md-12 emi-col-1">
+                     <div class="col-md-8 emi-tooltip">
+                        <p class="m-tooltip m-tooltip-left">50000</p>
+                        <p class="m-tooltip m-tooltip-right">5 Cr</p>
+                     </div>
+                     <div class="col-md-8 col-range">
+                        <input type="range" min="50000" max="50000000" value="50000" id="m_range_lumpsum_amount" name="m_range_lumpsum_amount" />
+                     </div>
+                     <div class="col-md-4 col-xs-8 emi-col-2 col-input">
+                        <span class="input-append amount-input-text">
+                           <input type="text" class="displayRange pl-new" min="50000" max="50000000" value="50000" name="m_range_lumpsum_amount" id="m_input_lumpsum_amount" />
+                           <p class="amount-inr">INR</p>
+                        </span>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         
+
+            <h4 class="input-title">Starting from month</h4>
+            <div class="container-emi">
+               <div class="row">
+                  <div class="col-md-12 emi-col-1">
+                     <div class="col-md-8 emi-tooltip">
+                        <p class="m-tooltip m-tooltip-left">12</p>
+                        <p class="m-tooltip m-tooltip-right">800</p>
+                     </div>
+                     <div class="col-md-8 col-range">
+                        <input type="range" min="12" max="800" value="12" id="m_range_lumpsum_month" name="m_range_lumpsum_month" onchange="updateInstallment()" onkeyup="updateInstallment()" />
+                     </div>
+                     <div class="col-md-4 col-xs-8 emi-col-2 col-input">
+                        <span class="input-append amount-input-text">
+                           <input type="text" class="displayRange pl-new" min="12" max="800" value="12" name="m_range_lumpsum_month" id="m_input_lumpsum_month" onchange="updateInstallment()" onkeyup="updateInstallment()" />
+                           <p class="amount-inr">Months</p>
+                        </span>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+
+<!-- button -->
+   <div class="button-container">
+      <button class="btn caclulate-btn" onclick="findEMI()">Calculate</button>
+   </div>
+   <!-- button -->
+</div>
+</form>
+
+
+
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="../wp-content/themes/bootstrap-basic/pre-payment-calculator/pre-payment-js.js"></script>
+</body>
