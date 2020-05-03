@@ -121,29 +121,3 @@ function changeonClick() {
     console.log("2")
   }
 }
-
-// Show selected in result.
-function hideononselection() {
-
-  if((document.getElementById("one").checked) || (document.getElementById("two").checked) || (document.getElementById("three").checked)) {
-    document.getElementById('not-availed').setAttribute("class","hide-box");
-    document.getElementById('same-tenure').setAttribute("class","show-box");
-    document.getElementById('same-emi').setAttribute("class","hide-box");
-  }
-
-  jQuery(document).ready(function() {
-    jQuery('#wrapper-data').css('display','block')
-    });
-  
-    jQuery('.rw').click(function(){
-      jQuery('.rw').removeClass('_active');
-      jQuery(this).addClass('_active');
-    })
-  
-    $('#button').click(function(){
-      if($('#one, #two, #three').is(":checked")) {
-          $('#not-availed-btn').removeClass("_active");
-          $('#same-tenure-btn').addClass("_active");
-      }
-    })
-}
