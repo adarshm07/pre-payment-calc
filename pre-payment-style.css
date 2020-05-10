@@ -1,48 +1,57 @@
+.m-rate.container-emi {
+	display: block;
+	margin: 50px 0px 6px;
+}
+.button-container {
+    padding: 20px 13px;
+}
+.result-wrapper {
+	margin: 6px 26px;
+	display: flex;
+    align-items: center;
+}
+.pre-payment-result {
+    display: flex;
+}
+.lumpsum-monthly-result {
+	display: none;
+}
+.result-pre {
+    border: 1px solid #f5f4f4db;
+	border-radius: 4px;
+	margin: 0px 12px 12px;
+}
+p.pre-payment-text {
+	margin-top: 9px;
+	font-weight: 600;
+    font-size: 18px;
+}
+p.pre-payment-text.blue {
+	color: #3366cc;
+}
+p.pre-payment-text.orange {
+	color: #ff7000;
+}
+.chartArea {
+	transform: scale(1);
+	pointer-events: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .lumpsum-monthly {
 	display: none;
-}
-
-
-
-
-a.btn-selection {
-    background: #ff7000;
-    color: #ffffff;
-	padding: 9px;
-	font-size: 14px;
-	margin: 0px;
-	cursor: pointer;
-}
-.product-wrapper ._active {
-	background: #ffffff;
-	color: #000000 !important;
-	border: 1px solid #ff7000;
-}
-.selection {
-	display: flex	;
-}
-.result {
-	margin: 10px;
-	display: flex;
-}
-p#financialImpact {
-    font-weight: 600;
-}
-.btn-selection.usable {
-	width: 50%;
-	text-align: center;
-}
-.hide-box {
-	display: none;
-}
-.show-box {
-	display: block;
-}
-div#wrapper-data {
-    display: none;
-}
-.m-rate.container-emi {
-	display: flex;
 }
 .product-wrapper .container-calculator .col-emi-1 {
 	width: 100%;
@@ -58,11 +67,8 @@ div#wrapper-data {
 	padding-left: 16px;
 	position: absolute;
 }
-.container-checkbox, .m-rate-container .m-rate, .m-type {
+.container-checkbox, .m-rate-container .m-rate {
 	display: inline-flex;
-}
-.m-type .container-checkbox:first-child {
-    margin-bottom: 14px;
 }
 .product-wrapper .col-emi-4 {
 	width: 100%;
@@ -77,22 +83,8 @@ div#wrapper-data {
 .container-calculator {
 	margin-top: 20px;
 }
-#wrapper-data {
-	width: 97%;
-	border: 1px solid #f4f4f4;
-	padding: 24px;
-	border-radius: 4px;
-	margin: 40px 0px 10px 13px;
-	display: block;
-	/* display: flex; */
-	/* vertical-align: middle; */
-	/* align-items: center; */
-}
 h4.input-title.m-rate {
 	top: -16px;
-}
-.emi-padding.box-border {
-	border-left: 1px solid #f2f2f2;
 }
 .product-wrapper span.amount-input-text {
 	display: flex;
@@ -119,31 +111,6 @@ p.m-tooltip.m-tooltip-left, p.m-tooltip.m-tooltip-right {
 	left: -8px;
 	top: 18px;
 }
-.product-wrapper .m-info {
-	-webkit-appearance: none;
-	border-bottom: none;
-	font: bold 26px 'Open Sans';
-	text-align: center;
-	color: #000000;
-	padding: 14px;
-}
-.m-rate.container-emi {
-	margin: 50px 0px;
-	width: 50%;
-}
-.product-wrapper .custom.box {
-	display: none;
-	color: #ffffff;
-	padding: 20px;
-	margin-top: 20px;
-	border: 0px;
-}
-div.custom.box {
-	min-height: 164px;
-}
-.custom.box:hover, div.box:hover {
-	box-shadow: none;
-}
 .m-rate-container .m-column {
 	width: 25%;
 	padding: 14px;
@@ -155,43 +122,18 @@ div.custom.box {
 .m-column.m-rate {
     display: contents;
 }
-.more_info_tooltip {
-	display: none;
-	color: #928c8c;
-}
-.more_info_tooltip .title {
-	position: absolute;
-	top: 20px;
-	background: #ebebeb;
-	padding: 4px;
-	left: -107px;
-	border-radius: 4px;
-	white-space: nowrap;
-}
 span.tooltip-info {
 	color: #d0cece;
 	font-weight: 400;
-}
-.inclusive.m-amount, .exclusive.m-amount {
-	display: none;
-}
-.product-wrapper .checkbox-container {
-	background: #f7f6f6;
-	width: auto;
-	padding: 14px 0px 14px 14px;
-	margin: 0px 0px 20px;
-	position: relative;
-	z-index: 9;
-	box-shadow: 0 12px 0px 0px #ffffff, 0 -12px 0px 0px #ffffff, 4px 0 15px -4px #e6e4e4, -4px 0 15px -4px #e6e4e4;
 }
 .m-column.m-rate {
 	margin: 14px 0px -14px;
 	
 }
-.m-column.m-rate:first-child {
+/* .m-column.m-rate:first-child {
 	padding-left: 0px;
 	margin-left: -16px
-}
+} */
 p.m-label {
 	margin: 2px 0px 0px 0px;
 }
@@ -322,24 +264,61 @@ input[type=text].displayRange {
 	border: none;
 	text-align: right;
 }
-.product-wrapper .m-title {
-	text-align: center;
-	font: 600 16px 'Open Sans';
-	letter-spacing: 0.1px;
-}
-.m-title.orange {
-	color: #ff7000;
-}
-.m-title.blue {
-	color: #294e9b;
-}
-@media only screen and (max-width: 1023px) {
-	.product-wrapper .m-info {
-		padding: 14px;
-		display: grid;
-	}
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 @media only screen and (max-width: 767px) {
+	.button-container {
+		padding: 0px;
+	}
+	.result-pre {
+		margin: 0px 0px 14px;
+	}
+	p.pre-payment-text {
+		font-size: 14px;
+	}
+	.product-wrapper {
+		padding: 0px;
+	}
+	.chartArea {
+		transform: scale(0.7);
+		position: absolute;
+		margin-top: -54px;
+	}
+	.product-wrapper h4.input-title.ln-amount {
+		margin-top: 16px;
+	}
+
+
+
+
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
 	.product-wrapper h4.input-title {
 		padding-left: 0px;
 		font-size: 14px;
@@ -354,17 +333,6 @@ input[type=text].displayRange {
 	.container-emi input[type=range] {
 		width: 100%;
 		margin: 16.8px 0px;
-	}
-	.product-wrapper .m-info {
-		display: block;
-		font-size: 16px;
-	}
-	.product-wrapper .checkbox-container {
-		margin: 0px 0px 14px;
-		padding: 14px;
-	}
-	.product-wrapper .m-title {
-		font: 600 13px 'Open Sans';
 	}
 	.container-checkbox {
 		display: inline-flex;
@@ -392,7 +360,7 @@ input[type=text].displayRange {
 	.product-wrapper .container-emi {
 		margin: 20px 0px;
 	}
-	.container-emi .m-tooltip, .m-type .container-checkbox:first-child {
+	.container-emi .m-tooltip {
 		margin: 0px;
 	}
 	h4.input-title.m-rate {
@@ -409,32 +377,15 @@ input[type=text].displayRange {
 	.product-wrapper .container-calculator .col-emi-1 {
 		padding: 14px 14px 0px 14px;
 	}
-	.m-column.m-rate:first-child {
+	/* .m-column.m-rate:first-child {
 		padding-left: 0px;
 		margin-left: 0px
-	}
-	.more_info_tooltip {
-		position: relative;
-		top: 2px;
-		display: block;
-	}
-	.more_info_tooltip i.fa.fa-exclamation-circle {
-		transform: rotate(180deg);
-	}
-	span.more_info_tooltip.m-inclusive span.title {
-		left: -184px;
-	}
-	.m-type {
-		display: inline-flex;
-	}
+	} */
 	label.checkbox-button {
 		margin-left: 0px;
 	}
 	span.tooltip-info {
 		display: none;
-	}
-	div#wrapper-data {
-		padding: 12px;
 	}
 	.emi-col-1 {
 		margin-top: 32px;
@@ -455,9 +406,6 @@ input[type=text].displayRange {
 	.product-wrapper .emi-padding {
 		padding: 0px;
 	}
-	div.custom.box {
-		min-height: 122px;
-	}
 	input[type=text].displayRange {
 		width: 64%;
 		font: 12px 'Open Sans';
@@ -470,9 +418,6 @@ input[type=text].displayRange {
 		right: -28px;
 		top: -40px;
 	}
-	div.custom.box {
-		min-height: 96px;
-	}
 	.container-calculator {
 		padding: 0px;
 		margin: -12px;
@@ -480,11 +425,5 @@ input[type=text].displayRange {
 	p.m-label,
 	.product-wrapper p.m-tooltip {
 		font-size: 12px;
-	}
-	span.more_info_tooltip.m-inclusive span.title {
-		left: -184px;
-	}
-	div#wrapper-data {
-		padding: 12px 0px;
 	}
 }
