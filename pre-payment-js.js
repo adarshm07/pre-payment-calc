@@ -1,9 +1,22 @@
+window.addEventListener("DOMContentLoaded", () => findEMI());
+
+function addComma() {
+  var x = document.getElementById('m_input_amount').value;
+  m_input_amount.value = x.replace(/,/g, "").replace(/(\d)(?=(\d\d)+\d$)/g, '$1,');
+
+  var y = document.getElementById('m_input_lumpsum_amount').value;
+  m_input_lumpsum_amount.value = y.replace(/,/g, "").replace(/(\d)(?=(\d\d)+\d$)/g, '$1,');
+
+  var z = document.getElementById('m_input_lumpsum_amountmonthly').value;
+  m_input_lumpsum_amountmonthly.value = z.replace(/,/g, "").replace(/(\d)(?=(\d\d)+\d$)/g, '$1,');
+}
+
 // Loan Amount
-$('#m_range_amount').on('change',function () {
+$('#m_range_amount').on('input',function () {
   var newVal = $(this).val().replace(/(\d)(?=(\d\d)+\d$)/g, '$1,');
   $("#m_input_amount").val(newVal);
   });
-  $('#m_input_amount').on('change', function(){
+  $('#m_input_amount').on('input', function(){
   $('#m_range_amount').val($(this).val().replace(/\D/g,''))
   });
 
@@ -72,19 +85,10 @@ function findEMI() {
     var emiStartMonth = parseInt(document.getElementById("m_range_lumpsum_monthly").value);
     var emiIncreasedAmount = parseInt(document.getElementById("m_range_lumpsum_amountmonthly").value);
 
-    // console.log("principal: "+principal);
-    // console.log("interestAmount: "+interestAmount);
-    // console.log("tenure: "+tenure);
-    // console.log("lumpsumAmount: "+lumpsumAmount);
-    // console.log("lumpsumMonth: "+lumpsumMonth);
-    // console.log("emiStartMonth: "+emiStartMonth);
-    // console.log("emiIncreasedAmount: "+emiIncreasedAmount);
-
     // EMI Calculation
 
     var EMIAmount = principal * interestAmount * (Math.pow(1 + interestAmount,tenure)) / ((Math.pow(1 + interestAmount,tenure))- 1);
     var monthlyEMIAmount = EMIAmount.toFixed(0);
-    // console.log("EMIAmount: "+EMIAmount);
     var EMI_OLD = parseInt(monthlyEMIAmount);
 
     var totalLoanAmount__ = tenure * EMIAmount;
@@ -92,9 +96,9 @@ function findEMI() {
 
     var totalInterest__ = totalAmount__ - principal;
 
-    document.getElementById('totalInterest__').innerHTML = totalInterest__;
+    document.getElementById('totalInterest__').innerHTML = ('' + totalInterest__).replace(/(\d)(?=(\d\d)+\d$)/g, '$1,');
 
-  // Looping (Ende Muthappa, ingalu kaatholi!!!!!!)
+  // Looping
 
   function lumpsumOneTime() {  
     var closingBalance = principal;
@@ -124,21 +128,19 @@ function findEMI() {
     n++
   }
 
-  // console.log("closingBalance: "+closingBalance);
-  // console.log("EMI_OLD: "+EMI_OLD);
-  // console.log("interestPaid: "+interestPaid);
-  // console.log("InterestRate: "+InterestRate);
-  // console.log("lumpsumInterestPaid: "+lumpsumInterestPaid);
-
   var tenureReduced = tenure - (n-1);
   var interestSaved = ((EMI_OLD * tenure) - principal) - lumpsumInterestPaid;
 
   // Display in Front-end
-  document.getElementById('tenureReduced').innerHTML = tenureReduced;
-  document.getElementById('interestSaved').innerHTML = interestSaved.toFixed(0);
-
-  // console.log("tenureReduced: "+tenureReduced);
-  // console.log("interestSaved: "+interestSaved);
+  if((interestSaved >= 0) || (tenureReduced >= 0)) {
+    document.getElementById('interestSaved').innerHTML = interestSaved.toFixed(0).replace(/(\d)(?=(\d\d)+\d$)/g, '$1,');
+    document.getElementById('tenureReduced').innerHTML = tenureReduced;
+  } else {
+    interestSaved = 0;
+    tenureReduced = 0;
+    document.getElementById('interestSaved').innerHTML = interestSaved;
+    document.getElementById('tenureReduced').innerHTML = tenureReduced;
+  }
   }
   lumpsumOneTime();
 
@@ -171,38 +173,43 @@ function findEMI() {
     interestSavedMonthly = ((EMI_OLD * tenure) - principal) - lumpsumInterestPaid;
 
     // Display in Front-end
-    document.getElementById('tenureReducedMonthly').innerHTML = tenureReducedMonthly;
-    document.getElementById('interestSavedMonthly').innerHTML = interestSavedMonthly.toFixed(0);
-
-    // console.log("tenureReducedMonthly: "+tenureReducedMonthly);
-    // console.log("interestSavedMonthly: "+interestSavedMonthly);
+    if((interestSavedMonthly >= 0) || (tenureReducedMonthly >0)) {
+      document.getElementById('interestSavedMonthly').innerHTML = interestSavedMonthly.toFixed(0).replace(/(\d)(?=(\d\d)+\d$)/g, '$1,');
+      document.getElementById('tenureReducedMonthly').innerHTML = tenureReducedMonthly;
+    } else {
+      interestSavedMonthly = 0;
+      tenureReducedMonthly = 0;
+      document.getElementById('interestSavedMonthly').innerHTML = interestSavedMonthly;
+      document.getElementById('tenureReducedMonthly').innerHTML = tenureReducedMonthly;
+    }
     }
     lumpsumMonthly();
 
     // Var for Chart
 
     var prepaymentOptions = document.querySelector('.checkbox-button__input:checked').value;
-    console.log("prepaymentOptions: " +prepaymentOptions);
     
-    window.oneVar = totalInterest__;
-    console.log("totalInterest__: "+totalInterest__);
-  if(prepaymentOptions == "1") {
-      twoVar = +interestSaved.innerHTML;
-      console.log("1: "+twoVar);
-      
-  } else {
+    oneVar = totalInterest__;
+  
+    if(prepaymentOptions == "1") {
+      twoVar = +interestSaved.innerHTML.replace(/\D/g,'');
+    } else {
       twoVar = interestSavedMonthly;
-      console.log("2:"+twoVar);
-  }
+    }
 
   onClickDrawChart();
 }
 
 function updateInstallment() {
-  var tenure = document.getElementById("m_range_tenure").value;
+  var tenure = document.getElementById('m_range_tenure').value;
   document.getElementById('m_range_lumpsum_month').setAttribute("max", tenure);
 }
 
+function updateAmount() {
+  var maxAmount = document.getElementById('m_range_amount').value;
+  document.getElementById('m_range_lumpsum_amount').setAttribute("max", maxAmount);
+  document.getElementById('m_range_lumpsum_amountmonthly').setAttribute("max", maxAmount);
+}
 // Hide / Show onclick of Button
 
 function changeonClick() {

@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="./pre-payment-style.css">
+<link rel="stylesheet" href="../wp-content/themes/bootstrap-basic/pre-payment-calculator/pre-payment-style.css">
 <div class="container-calculator">
       <form id="prepayment-form" method="post" action=""> 
          <div class="container col-emi-1">
@@ -12,11 +12,11 @@
                         <p class="m-tooltip m-tooltip-right">2 Cr</p>
                      </div>
                      <div class="col-md-8 col-range">
-                        <input type="range" min="100000" max="20000000" value="100000" id="m_range_amount" name="m_range_amount" />
+                        <input type="range" min="100000" max="20000000" value="100000" id="m_range_amount" name="m_range_amount" onchange="updateAmount()" />
                      </div>
                      <div class="col-md-4 col-xs-8 emi-col-2 col-input">
                         <span class="input-append amount-input-text">
-                           <input type="text" class="displayRange pl-new" min="100000" max="20000000" value="100000" name="m_range_amount" id="m_input_amount" />
+                           <input type="text" class="displayRange pl-new" min="100000" max="20000000" value="100000" name="m_range_amount" id="m_input_amount" onchange="updateAmount()" onkeyup="addComma()" />
                            <p class="amount-inr">INR</p>
                         </span>
                      </div>
@@ -97,15 +97,15 @@
                <div class="row">
                   <div class="col-md-12 emi-col-1">
                      <div class="col-md-8 emi-tooltip">
-                        <p class="m-tooltip m-tooltip-left">100000</p>
-                        <p class="m-tooltip m-tooltip-right">2 Cr</p>
+                        <p class="m-tooltip m-tooltip-left">0</p>
+                        <p class="m-tooltip m-tooltip-right"> Max Amount</p>
                      </div>
                      <div class="col-md-8 col-range">
-                        <input type="range" min="0" max="20000000" value="0" id="m_range_lumpsum_amount" name="m_range_lumpsum_amount" />
+                        <input type="range" min="0" max="100000" value="0" id="m_range_lumpsum_amount" name="m_range_lumpsum_amount" />
                      </div>
                      <div class="col-md-4 col-xs-8 emi-col-2 col-input">
                         <span class="input-append amount-input-text">
-                           <input type="text" class="displayRange pl-new" min="0" max="20000000" value="0" name="m_range_lumpsum_amount" id="m_input_lumpsum_amount" />
+                           <input type="text" class="displayRange pl-new" min="0" max="20000000" value="0" name="m_range_lumpsum_amount" id="m_input_lumpsum_amount" onkeyup="addComma()" />
                            <p class="amount-inr">INR</p>
                         </span>
                      </div>
@@ -114,13 +114,13 @@
             </div>
          
 
-            <h4 class="input-title">EMI Month</h4>
+            <h4 class="input-title">End of</h4>
             <div class="container-emi">
                <div class="row">
                   <div class="col-md-12 emi-col-1">
                      <div class="col-md-8 emi-tooltip">
                         <p class="m-tooltip m-tooltip-left">1</p>
-                        <p class="m-tooltip m-tooltip-right">max Tenure</p>
+                        <p class="m-tooltip m-tooltip-right">Max Tenure</p>
                      </div>
                      <div class="col-md-8 col-range">
                         <input type="range" min="1" max="12" value="1" id="m_range_lumpsum_month" name="m_range_lumpsum_month" onchange="updateInstallment()" onkeyup="updateInstallment()" />
@@ -138,20 +138,20 @@
 
    <!-- Lumpsum Part 2 -->
    <div class="lumpsum-monthly">
-      <h4 class="input-title">Monthly Additional Amount</h4>
+      <h4 class="input-title">Monthly Amount</h4>
             <div class="container-emi">
                <div class="row">
                   <div class="col-md-12 emi-col-1">
                      <div class="col-md-8 emi-tooltip">
-                        <p class="m-tooltip m-tooltip-left">100000</p>
-                        <p class="m-tooltip m-tooltip-right">2 Cr</p>
+                        <p class="m-tooltip m-tooltip-left">0</p>
+                        <p class="m-tooltip m-tooltip-right">Max Amount</p>
                      </div>
                      <div class="col-md-8 col-range">
-                        <input type="range" min="0" max="20000000" value="0" id="m_range_lumpsum_amountmonthly" name="m_range_lumpsum_amountmonthly" />
+                        <input type="range" min="0" max="100000" value="0" id="m_range_lumpsum_amountmonthly" name="m_range_lumpsum_amountmonthly" />
                      </div>
                      <div class="col-md-4 col-xs-8 emi-col-2 col-input">
                         <span class="input-append amount-input-text">
-                           <input type="text" class="displayRange pl-new" min="0" max="20000000" value="0" name="m_range_lumpsum_amountmonthly" id="m_input_lumpsum_amountmonthly" />
+                           <input type="text" class="displayRange pl-new" min="0" max="20000000" value="0" name="m_range_lumpsum_amountmonthly" id="m_input_lumpsum_amountmonthly" onkeyup="addComma()" />
                            <p class="amount-inr">INR</p>
                         </span>
                      </div>
@@ -160,13 +160,13 @@
             </div>
          
 
-            <h4 class="input-title">Starting from month</h4>
+            <h4 class="input-title">Starting Month</h4>
             <div class="container-emi">
                <div class="row">
                   <div class="col-md-12 emi-col-1">
                      <div class="col-md-8 emi-tooltip">
                         <p class="m-tooltip m-tooltip-left">1</p>
-                        <p class="m-tooltip m-tooltip-right">max Tenure</p>
+                        <p class="m-tooltip m-tooltip-right">Max Tenure</p>
                      </div>
                      <div class="col-md-8 col-range">
                         <input type="range" min="1" max="12" value="1" id="m_range_lumpsum_monthly" name="m_range_lumpsum_monthly" onchange="updateInstallment()" onkeyup="updateInstallment()" />
@@ -189,39 +189,53 @@
 <!-- button -->
 
       </form>
-<br><br><br>
 <div class="result-pre">
    <div class="row">
    <div class="result-wrapper">
       <div class="lumpsum-result">
+         <div class="one-result">
             <p class="pre-payment-text blue">Total Interest: </p>
             <div class="pre-payment-result">
             <p class="pre-payment-text">Rs.</p>
-            <p class="pre-payment-text" id="totalInterest__">0</p>
+            <p class="pre-payment-text" id="totalInterest__">3,280</p>
+         </div>
          </div>
          <div class="lumpsum-one-result">
-            
+            <div class="one-result">
                <p class="pre-payment-text">Tenure Reduced: </p>
-               <!-- <div class="pre-payment-result"> -->
-               <p class="pre-payment-text" id="tenureReduced">0</p>
-            <!-- </div> -->
-               <p class="pre-payment-text orange">Interest Saved: </p>
                <div class="pre-payment-result">
-               <p class="pre-payment-text">Rs.</p>
-               <p class="pre-payment-text" id="interestSaved">1000</p>
+               <p class="pre-payment-text" id="tenureReduced">0</p>
+               <p class="pre-payment-text">&nbsp;Month(s)</p>
+               </div>
+            </div>
+               
+               <div class="one-result">
+                  <p class="pre-payment-text orange">Interest Saved: </p>
+                  <div class="pre-payment-result">
+                  <p class="pre-payment-text">Rs.</p>
+                  <p class="pre-payment-text" id="interestSaved">4</p>
+               </div>
+               
             </div>
          </div>
 
          <div class="lumpsum-monthly-result">
+            <div class="one-result">
                <p class="pre-payment-text">Tenure Reduced: </p>
-               <!-- <div class="pre-payment-result"> -->
-               <p id="tenureReducedMonthly">1000</p>
-            <!-- </div> -->
-               <p class="pre-payment-text orange">Interest Saved: </p>
                <div class="pre-payment-result">
-                  <p class="pre-payment-text">Rs.</p>
-               <p class="pre-payment-text" id="interestSavedMonthly">1000</p>
+               <p class="pre-payment-text" id="tenureReducedMonthly">0</p>
+               <p class="pre-payment-text">&nbsp;Month(s)</p>
+               </div>
             </div>
+               
+               <div class="one-result">
+                  <p class="pre-payment-text orange">Interest Saved: </p>
+                  <div class="pre-payment-result">
+                     <p class="pre-payment-text">Rs.</p>
+                  <p class="pre-payment-text" id="interestSavedMonthly">4</p>
+               </div>
+               </div>
+               
          </div>
       </div>
    </div>
@@ -233,5 +247,4 @@
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script src='https://www.gstatic.com/charts/loader.js'></script>
-<script src="./pre-payment-js.js"></script>
-</body>
+<script src="../wp-content/themes/bootstrap-basic/pre-payment-calculator/pre-payment-js.js"></script>

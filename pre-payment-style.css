@@ -19,10 +19,9 @@
 .result-pre {
     border: 1px solid #f5f4f4db;
 	border-radius: 4px;
-	margin: 0px 12px 12px;
+	margin: 66px 12px 12px;
 }
 p.pre-payment-text {
-	margin-top: 9px;
 	font-weight: 600;
     font-size: 18px;
 }
@@ -32,24 +31,13 @@ p.pre-payment-text.blue {
 p.pre-payment-text.orange {
 	color: #ff7000;
 }
+.one-result {
+    margin-top: 16px;
+}
 .chartArea {
 	transform: scale(1);
 	pointer-events: none;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 .lumpsum-monthly {
 	display: none;
 }
@@ -70,21 +58,8 @@ p.pre-payment-text.orange {
 .container-checkbox, .m-rate-container .m-rate {
 	display: inline-flex;
 }
-.product-wrapper .col-emi-4 {
-	width: 100%;
-	box-shadow: 0 0 12px 0 #e6e4e4;
-	border-top-right-radius: 0px;
-	border-top-left-radius: 0px;
-	border-bottom-right-radius: 4px;
-	border-bottom-left-radius: 4px;
-	margin-top: -20px;
-	padding: 14px;
-}
 .container-calculator {
 	margin-top: 20px;
-}
-h4.input-title.m-rate {
-	top: -16px;
 }
 .product-wrapper span.amount-input-text {
 	display: flex;
@@ -122,18 +97,10 @@ p.m-tooltip.m-tooltip-left, p.m-tooltip.m-tooltip-right {
 .m-column.m-rate {
     display: contents;
 }
-span.tooltip-info {
-	color: #d0cece;
-	font-weight: 400;
-}
 .m-column.m-rate {
 	margin: 14px 0px -14px;
 	
 }
-/* .m-column.m-rate:first-child {
-	padding-left: 0px;
-	margin-left: -16px
-} */
 p.m-label {
 	margin: 2px 0px 0px 0px;
 }
@@ -264,28 +231,12 @@ input[type=text].displayRange {
 	border: none;
 	text-align: right;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 @media only screen and (max-width: 767px) {
 	.button-container {
 		padding: 0px;
 	}
 	.result-pre {
-		margin: 0px 0px 14px;
+		margin: 84px 0px 14px;
 	}
 	p.pre-payment-text {
 		font-size: 14px;
@@ -296,29 +247,11 @@ input[type=text].displayRange {
 	.chartArea {
 		transform: scale(0.7);
 		position: absolute;
-		margin-top: -54px;
+		margin-top: -66px;
 	}
 	.product-wrapper h4.input-title.ln-amount {
 		margin-top: 16px;
 	}
-
-
-
-
-
-	
-
-
-
-
-
-
-
-
-
-
-
-
 	.product-wrapper h4.input-title {
 		padding-left: 0px;
 		font-size: 14px;
@@ -377,15 +310,8 @@ input[type=text].displayRange {
 	.product-wrapper .container-calculator .col-emi-1 {
 		padding: 14px 14px 0px 14px;
 	}
-	/* .m-column.m-rate:first-child {
-		padding-left: 0px;
-		margin-left: 0px
-	} */
 	label.checkbox-button {
 		margin-left: 0px;
-	}
-	span.tooltip-info {
-		display: none;
 	}
 	.emi-col-1 {
 		margin-top: 32px;
@@ -425,5 +351,11 @@ input[type=text].displayRange {
 	p.m-label,
 	.product-wrapper p.m-tooltip {
 		font-size: 12px;
+	}
+	.product-wrapper {
+		padding: 0 10px;
+	}
+	.chartArea {
+		transform: scale(0.56);
 	}
 }
